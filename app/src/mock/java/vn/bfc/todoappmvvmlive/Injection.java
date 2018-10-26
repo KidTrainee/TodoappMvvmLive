@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.example.android.architecture.blueprints.todoapp;
+package vn.bfc.todoappmvvmlive;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
@@ -39,8 +39,8 @@ public class Injection {
     public static TasksRepository provideTasksRepository(@NonNull Context context) {
         checkNotNull(context);
         ToDoDatabase database = ToDoDatabase.getInstance(context);
-        return TasksRepository.getInstance(FakeTasksRemoteDataSource.getInstance(),
-                TasksLocalDataSource.getInstance(new AppExecutors(),
-                        database.taskDao()));
+        return TasksRepository.getInstance(
+                FakeTasksRemoteDataSource.getInstance(),
+                TasksLocalDataSource.getInstance(new AppExecutors(), database.taskDao()));
     }
 }
